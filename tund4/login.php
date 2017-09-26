@@ -36,9 +36,24 @@
 			$signupFamilyName = $_POST["signupFamilyName"];
 		}
 	}
+	
+	//kas päev on määratud
+	
+	if (isset ($_POST["signupBirthDay"])){
+		$signupBirthDay = $_POST["signupBirthDay"];
+		//echo $signupBirthDay;
+	}
+	
 	//kas kuu on määratud
 	if(isSet($_POST["signupBirthMonth"])){
 		$signupBirthMonth = intval($_POST["signupBirthMonth"]);
+	}
+	
+	//kas aasta on määratud
+	
+	if (isset ($_POST["signupBirthYear"])){
+		$signupBirthYear = $_POST["signupBirthYear"];
+		//echo $signupBirthYear;
 	}
 	
 	//kontrollime, kas kirjutati kasutajanimeks email
@@ -66,6 +81,21 @@
 		} else {
 			//$signupGenderError = " (Palun vali sobiv!) Määramata!";
 	}
+	
+	//Tekitame kuupäeva valiku
+	$signupDaySelectHTML = "";
+	$signupDaySelectHTML .= '<select name="signupBirthDay">' ."\n";
+	$signupDaySelectHTML .= '<option value="" selected disabled>päev</option>' ."\n";
+	for ($i = 1; $i < 32; $i ++){
+		if($i == $signupBirthDay){
+			$signupDaySelectHTML .= '<option value="' .$i .'" selected>' .$i .'</option>' ."\n";
+		} else {
+			$signupDaySelectHTML .= '<option value="' .$i .'">' .$i .'</option>' ." \n";
+		}
+		
+	}
+	$signupDaySelectHTML.= "</select> \n";
+	
 	//tekitame sünnikuu valiku
 	$monthNamesEt = ["jaanuar","veebruar", "märts", "aprill", "mai", "juuni", 
 	"juuli", "august", "september", "oktoober", "november", "detsember"];
