@@ -46,6 +46,7 @@
 <body>
 	<h1>Foto</h1>
 	<p><a href="?logout=1">Logi välja</a></p>
+	<p><a href="usersinfo.php">Info kasutajate kohta</a></p>
 	<img src="<?php echo $picsDir .$picFile; ?>" alt="kool">
 	</body>	
 </html>
